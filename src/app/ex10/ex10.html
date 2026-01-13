@@ -1,0 +1,22 @@
+<p>ex10 works!</p>
+<h2>Chuyển đổi Dương lịch → Âm lịch</h2>
+
+Ngày:
+<select [(ngModel)]="day">
+  <option *ngFor="let d of days" [value]="d">{{d}}</option>
+</select>
+
+Tháng:
+<select [(ngModel)]="month">
+  <option *ngFor="let m of months" [value]="m">{{m}}</option>
+</select>
+
+Năm:
+<select [(ngModel)]="year">
+  <option *ngFor="let y of years" [value]="y">{{y}}</option>
+</select>
+
+<br><br>
+<button (click)="convert()">Chuyển đổi</button>
+
+<p><b>{{result}}</b></p>

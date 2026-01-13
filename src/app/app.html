@@ -1,0 +1,38 @@
+<h1 class="title">Welcome to My App</h1>
+<div id="container">
+  <ul>
+    <li><a href="#">HOME</a></li>
+    
+    <li>
+      <a href="#">PRODUCTS</a>
+      <ul>
+        <li><a routerLink="sanpham1">PRODUCT 1</a></li>
+        <li><a routerLink="sanpham2">PRODUCT 2</a></li>
+        <li><a routerLink="sanpham3">PRODUCT 3</a></li>
+      </ul>
+    </li>
+    
+    <li>
+      <a href="#">Customers</a>
+      <ul>
+        <li><a routerLink="/list-customer">Customer list</a></li>
+        <li><a routerLink="/list-customer-service">Customer list - Services</a></li>
+        <li><a routerLink="list-customer-http">Customer list - HTTP Services</a></li>
+      </ul>
+    </li>
+    
+    <li>
+      <a href="#">JAVASCRIPT</a>
+      <ul>
+        <li><a href="#">LESSON 01</a></li>
+        <li><a href="#">LESSON 02</a></li>
+        <li><a href="#">LESSON 03</a></li>
+      </ul>
+    </li>
+    
+    <li><a href="#">HTML DOM</a></li>
+    <li><a routerLink="gioi-thieu">ABOUT</a></li>
+  </ul>
+</div>
+
+<router-outlet></router-outlet>
