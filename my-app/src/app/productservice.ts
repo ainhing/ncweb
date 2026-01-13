@@ -1,0 +1,16 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductService {
+  products=[{"id":"p1","name":"cocacola","quantity":12,"price":100},
+            {"id":"p2","name":"pepsi","quantity":8,"price":90},
+          {"id":"p3","name":"sting","quantity":15,"price":85},
+          {"id":"p4","name":"fanta","quantity":20,"price":95},
+        {"id":"p5","name":"lavie","quantity":8,"price":79}]
+  getAllProduct() {
+    return this.products;
+  }
+  
+}
