@@ -1,0 +1,58 @@
+<h1 class="title">Welcome to My App</h1>
+<div id="container">
+  <ul>
+    <li><a href="#">HOME</a></li>
+    
+    <li>
+      <a href="#">PRODUCTS</a>
+      <ul>
+        <li><a routerLink="sanpham1">PRODUCT 1</a></li>
+        <li><a routerLink="sanpham2">PRODUCT 2</a></li>
+        <li><a routerLink="sanpham3">PRODUCT 3</a></li>
+      </ul>
+    </li>
+    
+    <li>
+      <a href="#">Customers</a>
+      <ul>
+        <li><a routerLink="/list-customer">Customer list</a></li>
+        <li><a routerLink="/list-customer-service">Customer list - Services</a></li>
+        <li><a routerLink="list-customer-http">Customer list - HTTP Services</a></li>
+      </ul>
+    </li>
+    
+    <li>
+      <a href="#">FORMs</a>
+      <ul>
+        <li><a routerLink="form">Form</a></li>
+        <li><a routerLink="reac-form">Reactive Form</a></li>
+        <li><a href="#">LESSON 03</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">External API</a>
+      <ul>
+        <li><a routerLink="ex26">Ex 26</a></li>
+        <li><a routerLink="ex27">Ex 27</a></li>
+        <li><a href="#">Ex 28</a>
+      </ul>
+    </li>
+    
+    <li><a href="#">HTML DOM</a></li>
+    <li><a routerLink="gioi-thieu">ABOUT</a></li>
+  </ul>
+</div>
+<!-- <app-ex14/> -->
+ <!-- <app-ex13/> -->
+ <!-- <app-ex19/> 
+ <app-ex19-list/> 
+  <app-ex19-service/> -->
+<!-- <nav>
+  <ul>
+    <li><a routerLink="/product" routerLinkActive="active">Product</a></li>
+    <li><a routerLink="/list-product" routerLinkActive="active">List Products</a></li>
+    <li><a routerLink="/service-product" routerLinkActive="active">Product Service</a></li>
+  </ul>
+</nav> -->
+
+<router-outlet></router-outlet>

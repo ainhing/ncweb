@@ -1,0 +1,28 @@
+<p>customer works!</p>
+<table>
+    <thead  *ngFor="let c of Customer">
+        <tr>
+            <td>ID</td>
+            <td>{{c.id}}</td>
+            
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>{{c.name}}</td>
+        </tr>
+    </thead>
+</table>
+<table border="1">
+    <tbody>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Price</td>
+        </tr>
+        <tr *ngFor="let p of Customer[0].products">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+        </tr>
+    </tbody>  
+</table>
