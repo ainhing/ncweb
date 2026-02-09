@@ -1,0 +1,27 @@
+<p>book-update works!</p>
+<p style="color:red">{{errMessage}}</p>
+
+<table>
+  <tr>
+    <td>Book Id:</td>
+    <td><input [(ngModel)]="book.BookId" disabled /></td>
+  </tr>
+  <tr>
+    <td>Book Name:</td>
+    <td><input [(ngModel)]="book.BookName" /></td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td><input [(ngModel)]="book.Price" /></td>
+  </tr>
+  <tr>
+    <td>Image:</td>
+    <td><input [(ngModel)]="book.Image" /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button type="button" (click)="putBook()">Update</button>
+      <button type="button" (click)="back()">Back</button>
+    </td>
+  </tr>
+</table>

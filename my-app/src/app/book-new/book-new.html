@@ -1,0 +1,28 @@
+<p>book-new works!</p>
+<p style="color:red">{{errMessage}}</p>
+
+<table>
+  <tr>
+    <td>Book Id:</td>
+    <td><input [(ngModel)]="book.BookId" placeholder="Enter Book Id" /></td>
+  </tr>
+  <tr>
+    <td>Book Name:</td>
+    <td><input [(ngModel)]="book.BookName" placeholder="Enter Book Name" /></td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td><input [(ngModel)]="book.Price" placeholder="Enter Price" /></td>
+  </tr>
+  <tr>
+    <td>Image:</td>
+    <td><input [(ngModel)]="book.Image" placeholder="Enter image file (ex: b1.jpg)" /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button type="button" (click)="postBook()">Submit</button>
+      <button type="button" (click)="back()">Back</button>
+
+    </td>
+  </tr>
+</table>

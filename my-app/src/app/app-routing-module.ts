@@ -18,6 +18,10 @@ import { Form } from './form/form';
 import { ReactiveForm } from './reactive-form/reactive-form';
 import { FakeProductComponent } from './fake-product-component/fake-product-component';
 import { Ex27 } from './ex27/ex27';
+import { Books } from './books/books';
+import { BookDetailCoConponentmponent } from './book-detail-co-conponentmponent/book-detail-co-conponentmponent';
+import { BookNew } from './book-new/book-new';
+import { BookUpdate } from './book-update/book-update';
 const routes: Routes = [
   {path:'gioi-thieu',component: About},
   {path:'sanpham1',component: Listproduct1},
@@ -27,6 +31,12 @@ const routes: Routes = [
   {path:'reac-form',component: ReactiveForm},
   {path:'ex26',component: FakeProductComponent},
   {path:'ex27',component: Ex27},
+  {path:'ex39',component: Books},
+  {path:'ex41',component: BookDetailCoConponentmponent},
+  {path:'ex43',component: BookNew},
+  { path: 'ex45/:id', component: BookUpdate },
+  { path: 'ex45', component: BookUpdate },
+  {path:'ex41/:id',component: BookDetailCoConponentmponent},
   {path:'list-customer', component: Listcustomer},
   {path:'list-customer-service', component: Listcustomerservice},
   {path:'list-customer-http', component: CustomerHtte},
@@ -38,6 +48,7 @@ const routes: Routes = [
   // { path: 'list-product', component: Ex19List },
   // { path: 'service-product', component: Ex19Service },
   { path: '', redirectTo: '/list-product', pathMatch: 'full' },
+  
   {path:'**', component: Pagenotfound},
   
 ];

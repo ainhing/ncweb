@@ -35,7 +35,10 @@ import { ReactiveForm } from './reactive-form/reactive-form';
 import { Ex26 } from './ex26/ex26';
 import { FakeProductComponent } from './fake-product-component/fake-product-component';
 import { Ex27 } from './ex27/ex27';
-
+import { Books } from './books/books';
+import { BookDetailCoConponentmponent } from './book-detail-co-conponentmponent/book-detail-co-conponentmponent';
+import { BookNew } from './book-new/book-new';
+import { BookUpdate } from './book-update/book-update';
 
 @NgModule({
   declarations: [
@@ -69,7 +72,11 @@ import { Ex27 } from './ex27/ex27';
     ReactiveForm,
     Ex26,
     FakeProductComponent,
-    Ex27
+    Ex27,
+    Books,
+    BookDetailCoConponentmponent,
+    BookNew,
+    BookUpdate,
   ],
   imports: [
     BrowserModule,
