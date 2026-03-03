@@ -19,15 +19,15 @@
       <td>{{book.Price}}</td>
 
       <td>
-        <button (click)="view_detail(book.BookId)" style="border:none;background:transparent;cursor:pointer">
+        <button (click)="show_detail(book.BookId)" style="border:none;background:transparent;cursor:pointer">
           <img src="http://localhost:3000/static/images/{{book.Image}}" width="100" height="100" />
         </button>
       </td>
 
       <td>
-        <button (click)="view_detail(book.BookId)">Details</button>
+        <button (click)="show_update(book.BookId)">Edit</button>
         |
-        <button (click)="delete_book(book.BookId)">Delete</button>
+        <button (click)="request_deleted(book.BookId)">Delete</button>
       </td>
     </tr>
   </tbody>

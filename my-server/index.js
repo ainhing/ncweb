@@ -5,11 +5,11 @@ const port = 3000;
 const morgan = require("morgan");
 app.use(morgan("combined"));
 
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
-
 const cors = require("cors");
-app.use(cors());
+app.use(cors({ origin: "http://localhost:4200" }));
+
+// dùng built-in json parser của express (khỏi body-parser)
+app.use(express.json());
 
 const path = require("path");
 app.use("/static", express.static(path.join(__dirname, "public")));
@@ -29,64 +29,48 @@ let database = [
 
 // GET all
 app.get("/books", (req, res) => {
-  res.send(database);
+  res.json(database);
 });
 
 // GET detail
-app.get("/books/:id", (req, res) => {
-  const id = req.params["id"];
-  const p = database.find((x) => x.BookId == id);
-  if (!p) return res.status(404).send({ message: "Book not found" });
-  res.send(p);
-});
+app.get("/books/:id",cors(),(req,res)=>{ 
+  id=req.params["id"] 
+  let p=database.find(x=>x.BookId==id) 
+  res.send(p)     
+}) 
 
 // POST create
-app.post("/books", (req, res) => {
-  const b = req.body;
+app.post("/books",cors(),(req,res)=>{    
+//put json book into database 
+database.push(req.body); 
+//send message to client(send all database to client) 
+res.send(database) 
+})
 
-  if (!b || !b.BookId || !b.BookName) {
-    return res.status(400).send({ message: "Missing BookId/BookName" });
-  }
+// PUT update theo URL /books/:id
+app.put("/books",cors(),(req,res)=>{ 
+book=database.find(x=>x.BookId==req.body.BookId) 
+if(book!=null) 
+{ 
+book.BookName=req.body.BookName 
+book.Price=req.body.Price 
+book.Image=req.body.Image 
+} 
+res.send(database) 
+}) 
 
-  const exists = database.some((x) => x.BookId === b.BookId);
-  if (exists) return res.status(409).send({ message: "BookId already exists" });
-
-  if (!b.Image) b.Image = "no-image.jpg";
-  if (!b.Price) b.Price = 0;
-
-  database.push(b);
-  res.send(database);
-});
-
-// PUT update (theo URL /books/:id)
-app.put("/books/:id", (req, res) => {
-  const id = req.params["id"];
-  const index = database.findIndex((x) => x.BookId == id);
-  if (index < 0) return res.status(404).send({ message: "Book not found" });
-
-  const b = req.body;
-  // giữ BookId theo id trên URL cho chắc
-  database[index] = { ...b, BookId: id };
-  res.send(database);
-});
-
-// DELETE
-app.delete("/books/:id", (req, res) => {
-  const id = req.params["id"];
-  const before = database.length;
-  database = database.filter((x) => x.BookId !== id);
-
-  if (database.length === before) return res.status(404).send({ message: "Book not found" });
-  res.send(database);
-});
+// DELETE /books/:id
+app.delete("/books/:id",cors(),(req,res)=>{ 
+id=req.params["id"] 
+database = database.filter(x => x.BookId !== id); 
+res.send(database)     
+}) 
 
 // SEARCH (optional)
 app.get("/search", (req, res) => {
-  const keyword = (req.query.keyword || "").toString().trim();
-  const result = database.filter((b) =>
-    b.BookName.toLowerCase().includes(keyword.toLowerCase())
-  );
-  res.send(result);
+  const keyword = (req.query.keyword || "").toString().trim().toLowerCase();
+  const result = database.filter((b) => b.BookName.toLowerCase().includes(keyword));
+  res.json(result);
 });
 
 app.listen(port, () => {

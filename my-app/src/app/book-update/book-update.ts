@@ -10,39 +10,42 @@ import { BookAPIService } from '@app/myservice/book-apiservice';
   styleUrl: './book-update.css',
 })
 export class BookUpdate {
- book = new Book();
+ book: Book = new Book();
+  books: Book[] = [];
   errMessage: string = '';
-  id: string = '';
 
   constructor(
     private _service: BookAPIService,
     private router: Router,
-    private activeRoute: ActivatedRoute
+    private activeRouter: ActivatedRoute
   ) {
-    this.activeRoute.paramMap.subscribe((params) => {
+    this._service.getBooks().subscribe({
+      next: (data) => (this.books = data),
+      error: (err) => (this.errMessage = err),
+    });
+
+    this.activeRouter.paramMap.subscribe((params) => {
       const bookId = params.get('id');
       if (bookId) {
-        this.id = bookId;
-        this._service.getBook(bookId).subscribe({
-          next: (data) => { this.book = data; },
-          error: (err) => { this.errMessage = err; }
-        });
+        this.searchBook(bookId);
       }
     });
   }
 
+  searchBook(bookId: string) {
+    this._service.getBook(bookId).subscribe({
+      next: (data) => (this.book = data),
+      error: (err) => (this.errMessage = err),
+    });
+  }
+
   putBook() {
-  this._service.putBook(this.book.BookId, this.book).subscribe({
-    next: () => {
-      alert("Update success");
-      this.router.navigate(['ex39']);
-    },
-    error: (err) => this.errMessage = err
-  });
-}
-
-back() {
-  this.router.navigate(['ex39']);
-}
-
+    this._service.putBook(this.book).subscribe({
+      next: (data) => {
+        this.books = data;
+        this.router.navigate(['/books']); // optional redirect after update
+      },
+      error: (err) => (this.errMessage = err),
+    });
+  }
 }

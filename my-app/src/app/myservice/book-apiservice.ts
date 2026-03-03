@@ -53,24 +53,30 @@ export class BookAPIService {
       retry(3), 
       catchError(this.handleError)) 
     }
-    deleteBook(bookId: string) {
-            const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
-            const requestOptions:Object={ 
-              headers:headers, 
-              responseType:"text" 
-            } 
-            return this._http.delete<any>("http://localhost:3000/books/" + bookId,requestOptions);
-          }
-    putBook(bookId: string, aBook: any) {
-      const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8")
-      const requestOptions:Object={ 
-        headers:headers, 
-        responseType:"text" 
-      } 
-      return this._http.put<any>("http://localhost:3000/books/" + bookId, JSON.stringify(aBook),requestOptions).pipe( 
-        map(res=>JSON.parse(res) as IBook), 
+   deleteBook(bookId:string):Observable<any> 
+  { 
+    const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8") 
+    const requestOptions:Object={ 
+      headers:headers, 
+      responseType:"text" 
+    } 
+    return this._http.delete<any>("http://localhost:3000/books/"+bookId,requestOptions).pipe( 
+        map(res=>JSON.parse(res) as Array<IBook>), 
         retry(3), 
         catchError(this.handleError)) 
-}
+  }
+    putBook(aBook:any):Observable<any> 
+  { 
+    const headers=new HttpHeaders().set("Content-Type","application/json;charset=utf-8") 
+    const requestOptions:Object={ 
+      headers:headers, 
+      responseType:"text" 
+    } 
+    return this._http.put<any>("http://localhost:3000/books/",JSON.stringify(aBook),requestOptions).pipe( 
+        map(res=>JSON.parse(res) as Array<IBook>), 
+        retry(3), 
+        catchError(this.handleError)) 
+  } 
+
  
 }

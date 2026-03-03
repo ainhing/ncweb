@@ -22,6 +22,8 @@ import { Books } from './books/books';
 import { BookDetailCoConponentmponent } from './book-detail-co-conponentmponent/book-detail-co-conponentmponent';
 import { BookNew } from './book-new/book-new';
 import { BookUpdate } from './book-update/book-update';
+import { BookDelete } from './book-delete/book-delete';
+import { Fashion } from './fashion/fashion';
 const routes: Routes = [
   {path:'gioi-thieu',component: About},
   {path:'sanpham1',component: Listproduct1},
@@ -36,7 +38,9 @@ const routes: Routes = [
   {path:'ex43',component: BookNew},
   { path: 'ex45/:id', component: BookUpdate },
   { path: 'ex45', component: BookUpdate },
+  { path: 'ex47', component: BookDelete },
   {path:'ex41/:id',component: BookDetailCoConponentmponent},
+  {path:'ex53',component: Fashion},
   {path:'list-customer', component: Listcustomer},
   {path:'list-customer-service', component: Listcustomerservice},
   {path:'list-customer-http', component: CustomerHtte},

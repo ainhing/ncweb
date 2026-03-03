@@ -39,6 +39,8 @@ import { Books } from './books/books';
 import { BookDetailCoConponentmponent } from './book-detail-co-conponentmponent/book-detail-co-conponentmponent';
 import { BookNew } from './book-new/book-new';
 import { BookUpdate } from './book-update/book-update';
+import { BookDelete } from './book-delete/book-delete';
+import { Fashion } from './fashion/fashion';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { BookUpdate } from './book-update/book-update';
     BookDetailCoConponentmponent,
     BookNew,
     BookUpdate,
+    BookDelete,
+    Fashion,
   ],
   imports: [
     BrowserModule,

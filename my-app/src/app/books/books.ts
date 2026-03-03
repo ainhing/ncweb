@@ -23,7 +23,7 @@ export class Books {
     });
   }
 
-  view_detail(id: any) {
+  show_detail(id: any) {
     this.router.navigate(['ex41', id]);
   }
 
@@ -31,7 +31,7 @@ export class Books {
     this.router.navigate(['ex43']);
   }
 
-  go_edit(id: any) {
+  show_update(id: any) {
     this.router.navigate(['ex45', id]);
   }
 
@@ -43,5 +43,10 @@ export class Books {
       next: (data) => { this.books = data; },
       error: (err) => { this.errMessage = err; }
     });
+  }
+  request_deleted(id:any)
+  {
+    if(confirm("are you sure wanna delete ["+id+"]"))
+    {}
   }
 }
