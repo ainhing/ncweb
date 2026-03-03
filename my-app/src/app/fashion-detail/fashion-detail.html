@@ -1,0 +1,26 @@
+<p>{{errMessage}}</p>
+Fashion Id: <input type="text" #_id> <button
+(click)="searchFashion(_id.value)">Search</button>
+<table>
+    <tr>
+        <td>Fashion:</td>
+        <td>{{fashion._id}}</td>
+    </tr>
+    <tr>
+        <td>Fashion Style</td>
+        <td>{{fashion.fashion_style}}</td>
+    </tr>
+    <tr>
+        <td>Fashion Subject:</td>
+        <td>{{fashion.fashion_subject}}</td>
+    </tr>
+    <tr>
+        <td>Fashion Detail:</td>
+        <td>{{fashion.fashion_detail}}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <img src="{{get_image(fashion.fashion_image)}}" width="200px">
+        </td>
+    </tr>
+</table>

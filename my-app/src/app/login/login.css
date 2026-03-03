@@ -1,0 +1,6 @@
+.login-box{max-width:360px;margin:40px auto;padding:20px;border:1px solid #ccc;border-radius:6px}
+.login-box h2{margin:0 0 10px}
+.login-box label{display:block;margin-top:10px}
+.login-box input{width:100%;padding:8px;margin-top:4px}
+.login-box .error{color:#b00}
+.login-box button{margin-top:12px;padding:8px 12px}

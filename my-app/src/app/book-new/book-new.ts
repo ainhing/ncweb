@@ -10,20 +10,39 @@ import { BookAPIService } from '@app/myservice/book-apiservice';
   styleUrl: './book-new.css',
 })
 export class BookNew {
-   book=new Book(); 
-  books:any 
-  errMessage:string='' 
-  constructor(private _service: BookAPIService,private router:Router,private activeRouter:ActivatedRoute){ 
-    this._service.getBooks().subscribe({ 
-      next:(data)=>{this.books=data}, 
-      error:(err)=>{this.errMessage=err} 
-    }) 
-  } 
-  postBook() 
-  { 
+  book = new Book()
+  errMessage: string = ''
+  selectedFile: File | null = null
+
+  constructor(private _service: BookAPIService, private _router: Router) {}
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0]
+  }
+
+  postBook() {
+    if (this.selectedFile) {
+      // Upload ảnh trước, sau đó mới POST book
+      this._service.uploadImage(this.selectedFile).subscribe({
+        next: (data) => {
+          this.book.Image = data.filename
+          this.saveBook()
+        },
+        error: (err) => { this.errMessage = err }
+      })
+    } else {
+      this.saveBook()
+    }
+  }
+
+  saveBook() {
     this._service.postBook(this.book).subscribe({
-      next:(data)=>{this.books=data}, 
-error:(err)=>{this.errMessage=err} 
-}) 
-} 
+      next: () => { this._router.navigate(['/book-list']) },
+      error: (err) => { this.errMessage = err }
+    })
+  }
+
+  goBack() {
+    this._router.navigate(['/book-list'])
+  }
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "69a63227c63ee78b970ca833",
+    "user": "nguyenvanA",
+    "email": "vana@example.com",
+    "password": "123456789"
+  },
+  {
+    "_id": "69a63227c63ee78b970ca834",
+    "user": "tranthiB",
+    "email": "thib@example.com",
+    "password": "matkhauB"
+  },
+  {
+    "_id": "69a63227c63ee78b970ca835",
+    "user": "lequangC",
+    "email": "quangc@example.com",
+    "password": "matkhauC"
+  },
+  {
+    "_id": "69a63227c63ee78b970ca836",
+    "user": "phamminhD",
+    "email": "minhd@example.com",
+    "password": "matkhauD"
+  },
+  {
+    "_id": "69a63227c63ee78b970ca837",
+    "user": "hoangthiE",
+    "email": "thie@example.com",
+    "password": "matkhauE"
+  }
+]

@@ -24,6 +24,11 @@ import { BookNew } from './book-new/book-new';
 import { BookUpdate } from './book-update/book-update';
 import { BookDelete } from './book-delete/book-delete';
 import { Fashion } from './fashion/fashion';
+import { FashionDetail } from './fashion-detail/fashion-detail';
+import { Login } from './login/login';
+import { BookList } from './book-list/book-list';
+import { BookDetail } from './book-detail/book-detail';
+import { BookEdit } from './book-edit/book-edit';
 const routes: Routes = [
   {path:'gioi-thieu',component: About},
   {path:'sanpham1',component: Listproduct1},
@@ -41,17 +46,27 @@ const routes: Routes = [
   { path: 'ex47', component: BookDelete },
   {path:'ex41/:id',component: BookDetailCoConponentmponent},
   {path:'ex53',component: Fashion},
+  {path:'ex54/:id',component: FashionDetail},
+  {path:'ex54',component: FashionDetail},
   {path:'list-customer', component: Listcustomer},
   {path:'list-customer-service', component: Listcustomerservice},
   {path:'list-customer-http', component: CustomerHtte},
   {path:'list-customer-http/:id', component: Customerdetail},
   {path:'list-customer-service/:id', component: Customerdetail},
+  {path:'book-list', component: BookList}, 
+  {path:'book-new', component: BookNew}, 
+  {path:'book-edit/:id', component: BookEdit}, 
+  {path:'book-edit', component: BookEdit}, 
+  {path:'book-detail/:id', component: BookDetail}, 
+  {path:'book-detail', component: BookDetail}, 
+  // {path:'ex13-service', component: Ex13},
   // {path:'ex13-service', component: Ex13},
   // {path:'ex13-service/:id', component: Ex13Detail},
   // { path: 'product', component: Ex19 },
   // { path: 'list-product', component: Ex19List },
   // { path: 'service-product', component: Ex19Service },
-  { path: '', redirectTo: '/list-product', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: Login },
   
   {path:'**', component: Pagenotfound},
   

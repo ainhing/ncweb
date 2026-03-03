@@ -41,6 +41,11 @@ import { BookNew } from './book-new/book-new';
 import { BookUpdate } from './book-update/book-update';
 import { BookDelete } from './book-delete/book-delete';
 import { Fashion } from './fashion/fashion';
+import { FashionDetail } from './fashion-detail/fashion-detail';
+import { FileUpload } from './file-upload/file-upload';
+import { BookList } from './book-list/book-list';
+import { BookDetail } from './book-detail/book-detail';
+import { BookEdit } from './book-edit/book-edit';
 
 @NgModule({
   declarations: [
@@ -81,6 +86,11 @@ import { Fashion } from './fashion/fashion';
     BookUpdate,
     BookDelete,
     Fashion,
+    FashionDetail,
+    FileUpload,
+    BookList,
+    BookDetail,
+    BookEdit,
   ],
   imports: [
     BrowserModule,

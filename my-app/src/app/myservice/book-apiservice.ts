@@ -77,6 +77,11 @@ export class BookAPIService {
         retry(3), 
         catchError(this.handleError)) 
   } 
+  uploadImage(file: File): Observable<{ filename: string }> {
+    const formData = new FormData()
+    formData.append("image", file)
+    return this._http.post<{ filename: string }>("/upload", formData)
+  }
 
  
 }

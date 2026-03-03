@@ -1,0 +1,41 @@
+<h2>Chỉnh sửa sách</h2>
+<p>{{errMessage}}</p>
+
+<table>
+  <tr>
+    <td>Book Id:</td>
+    <td><input type="text" [(ngModel)]="book.BookId" name="BookId" readonly/></td>
+  </tr>
+  <tr>
+    <td>Book Name:</td>
+    <td><input type="text" [(ngModel)]="book.BookName" name="BookName"/></td>
+  </tr>
+  <tr>
+    <td>Author:</td>
+    <td><input type="text" [(ngModel)]="book.Author" name="Author"/></td>
+  </tr>
+  <tr>
+    <td>Category:</td>
+    <td><input type="text" [(ngModel)]="book.Category" name="Category"/></td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td><input type="number" [(ngModel)]="book.Price" name="Price"/></td>
+  </tr>
+  <tr>
+    <td>Image hiện tại:</td>
+    <td>
+      <img *ngIf="book.Image" src="http://localhost:3000/image/{{book.Image}}" width="60px">
+    </td>
+  </tr>
+  <tr>
+    <td>Đổi ảnh:</td>
+    <td><input type="file" (change)="onFileSelected($event)" name="image"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button (click)="putBook()">Update</button>
+      <button (click)="goBack()">Cancel</button>
+    </td>
+  </tr>
+</table>

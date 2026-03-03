@@ -1,52 +1,35 @@
-<p>book-new works!</p> 
-<p>{{errMessage}}</p> 
-<table> 
-  <tr> 
-    <td>Book Id:</td> 
-    <td> 
-      <input type="text" class="form-control" #name="ngModel" name="BookId" 
-      id="BookId" placeholder="Enter Book Id"           
-      [(ngModel)]="book.BookId"/> 
-    </td> 
-  </tr> 
-  <tr> 
-    <td>Book Name:</td> 
-    <td> 
-      <input type="text" class="form-control" #name="ngModel" 
-      name="BookName" id="BookName" placeholder="Enter Book Name"           
-      [(ngModel)]="book.BookName"/> 
-    </td> 
-  </tr> 
-  <tr> 
-    <td>Price:</td> 
-    <td> 
-      <input type="text" class="form-control" #name="ngModel" 
-      name="BookPrice" id="BookPrice" placeholder="Enter Price"           
-      [(ngModel)]="book.Price"/> 
-    </td> 
-  </tr> 
+<h2>Thêm sách mới</h2>
+<p>{{errMessage}}</p>
+
+<table>
   <tr>
-    <td colspan="2"> 
-            <button (click)="postBook()">Submit</button> 
-        </td> 
-    </tr>        
-</table> 
-<table border="1"> 
-    <tr> 
-        <td>BookId</td> 
-        <td>BookName</td> 
-        <td>Price</td> 
-        <td>Image</td> 
-    </tr> 
-    <tbody> 
-        <tr  *ngFor="let book of books"> 
-            <td>{{book.BookId}}</td> 
-            <td>{{book.BookName}}</td> 
-            <td>{{book.Price}} </td> 
-            <td> 
-                <img src="http://localhost:3000/static/images/{{book.Image}}" width="50px" 
-height="50px"> 
-            </td> 
-        </tr> 
-    </tbody> 
+    <td>Book Id:</td>
+    <td><input type="text" [(ngModel)]="book.BookId" name="BookId" placeholder="Nhập Book Id"/></td>
+  </tr>
+  <tr>
+    <td>Book Name:</td>
+    <td><input type="text" [(ngModel)]="book.BookName" name="BookName" placeholder="Nhập tên sách"/></td>
+  </tr>
+  <tr>
+    <td>Author:</td>
+    <td><input type="text" [(ngModel)]="book.Author" name="Author" placeholder="Nhập tác giả"/></td>
+  </tr>
+  <tr>
+    <td>Category:</td>
+    <td><input type="text" [(ngModel)]="book.Category" name="Category" placeholder="Nhập thể loại"/></td>
+  </tr>
+  <tr>
+    <td>Price:</td>
+    <td><input type="number" [(ngModel)]="book.Price" name="Price" placeholder="Nhập giá"/></td>
+  </tr>
+  <tr>
+    <td>Image:</td>
+    <td><input type="file" (change)="onFileSelected($event)" name="image"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <button (click)="postBook()">Submit</button>
+      <button (click)="goBack()">Cancel</button>
+    </td>
+  </tr>
 </table>
