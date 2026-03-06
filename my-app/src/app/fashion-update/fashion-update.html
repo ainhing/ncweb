@@ -1,0 +1,43 @@
+<div class="container mt-4" style="max-width: 600px;">
+  <h2>Chỉnh sửa Fashion</h2>
+
+  @if (errMessage) {
+    <div class="alert alert-danger">{{ errMessage }}</div>
+  }
+
+  <table class="table">
+      <tr>
+        <td><label>Style</label></td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="fashion.style" />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Fashion Subject</label></td>
+        <td>
+          <input type="text" class="form-control" [(ngModel)]="fashion.fashion_subject" />
+        </td>
+      </tr>
+      <tr>
+        <td><label>Fashion Detail</label></td>
+        <td>
+          <textarea class="form-control" rows="3" [(ngModel)]="fashion.fashion_detail"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td><label>Fashion Image</label></td>
+        <td>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+          @if (fashion.fashion_image) {
+            <img [src]="get_image(fashion.fashion_image)" class="mt-2" width="120" height="120" style="object-fit:cover">
+          }
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="btn btn-primary me-2" (click)="update()">Cập nhật</button>
+          <button class="btn btn-secondary" (click)="cancel()">Hủy</button>
+        </td>
+      </tr>
+    </table>
+</div>

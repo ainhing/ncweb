@@ -13,11 +13,11 @@ app.use(fileUpload({ limits: { fileSize: 10000000 }, abortOnLimit: true }))
 
 // ── DATABASE ──────────────────────────────────────
 let database = [
-  { BookId: "b1", BookName: "Ky thuat lap trinh co ban",  Author: "A", Category: "Lap trinh", Price: 70,  Image: "" },
-  { BookId: "b2", BookName: "Ky thuat lap trinh nang cao", Author: "B", Category: "Lap trinh", Price: 100, Image: "" },
-  { BookId: "b3", BookName: "May hoc co ban",              Author: "C",   Category: "AI/ML",     Price: 200, Image: "" },
-  { BookId: "b4", BookName: "May hoc nang cao",            Author: "D",   Category: "AI/ML",     Price: 300, Image: "" },
-  { BookId: "b5", BookName: "Lap trinh Robot co ban",      Author: "E",       Category: "Robot",     Price: 250, Image: "" },
+  { BookId: "b1", BookName: "Ky thuat lap trinh co ban",  Author: "A", Category: "Lap trinh", Price: 70,  Image: "my-server/public/images/b1.jpg" },
+  { BookId: "b2", BookName: "Ky thuat lap trinh nang cao", Author: "B", Category: "Lap trinh", Price: 100, Image: "my-server/public/images/b2.jpg" },
+  { BookId: "b3", BookName: "May hoc co ban",              Author: "C",   Category: "AI/ML",     Price: 200, Image: "my-server/public/images/b3.jpg" },
+  { BookId: "b4", BookName: "May hoc nang cao",            Author: "D",   Category: "AI/ML",     Price: 300, Image: "my-server/public/images/b4.jpg" },
+  { BookId: "b5", BookName: "Lap trinh Robot co ban",      Author: "E",       Category: "Robot",     Price: 250, Image: "my-server/public/images/b5.jpg" },
 ]
 
 // ── DEFAULT ───────────────────────────────────────

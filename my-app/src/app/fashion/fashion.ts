@@ -25,6 +25,18 @@ export class Fashion {
     return prefix+base64;
   }
   viewDetail(fashionId: string) {
-    this.router.navigate(['ex54', fashionId]);
+    this.router.navigate(['/ex54', fashionId]);  // ex54/:id
+  }
+
+  edit(id: string) {
+    this.router.navigate(['/ex56', id]);          // ex56/:id → FashionUpdate
+  }
+
+  delete(id: string) {
+    this.router.navigate(['/ex57', id]);          // ex57/:id → FashionDelete
+  }
+
+  addNew() {
+    this.router.navigate(['/ex55']);              // ex55 → FashionNew
   }
 }

@@ -2,7 +2,6 @@ import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { About } from './about/about';
@@ -46,6 +45,17 @@ import { FileUpload } from './file-upload/file-upload';
 import { BookList } from './book-list/book-list';
 import { BookDetail } from './book-detail/book-detail';
 import { BookEdit } from './book-edit/book-edit';
+import { Login } from './login/login';
+import { FashionNew } from './fashion-new/fashion-new';
+import { FashionUpdate } from './fashion-update/fashion-update';
+import { FashionDelete } from './fashion-delete/fashion-delete';
+import { Fashionadmin } from './fashionadmin/fashionadmin';
+import { FashionList } from './fashion-list/fashion-list';
+import { FashionEdit } from './fashion-edit/fashion-edit';
+import { Fashiondetail58 } from './fashiondetail58/fashiondetail58';
+import { Ex64productlist } from './ex64productlist/ex64productlist';
+import { Ex64cart } from './ex64cart/ex64cart';
+
 
 @NgModule({
   declarations: [
@@ -91,6 +101,17 @@ import { BookEdit } from './book-edit/book-edit';
     BookList,
     BookDetail,
     BookEdit,
+    Login,
+    FashionNew,
+    FashionUpdate,
+    FashionDelete,
+    Fashionadmin,
+    FashionList,
+    FashionEdit,
+    Fashiondetail58,
+    Ex64productlist,
+    Ex64cart,
+    
   ],
   imports: [
     BrowserModule,
@@ -100,7 +121,7 @@ import { BookEdit } from './book-edit/book-edit';
     HttpClientModule,
   ],
   providers: [
-    provideBrowserGlobalErrorListeners()
+    provideBrowserGlobalErrorListeners(),
   ],
   bootstrap: [App]
 })

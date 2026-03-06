@@ -1,0 +1,28 @@
+<div class="container mt-4" style="max-width: 500px;">
+  <h2>Xác nhận xóa Fashion</h2>
+
+  @if (errMessage) {
+    <div class="alert alert-danger">{{ errMessage }}</div>
+  }
+
+  @if (fashion) {
+    <div class="card">
+      <div class="card-body">
+        @if (fashion.fashion_image) {
+          <img [src]="get_image(fashion.fashion_image)" width="120" height="120"
+               style="object-fit:cover" class="mb-3 d-block">
+        }
+        <p><strong>Style:</strong> {{ fashion.style }}</p>
+        <p><strong>Tiêu đề:</strong> {{ fashion.fashion_subject }}</p>
+        <p><strong>Chi tiết:</strong> {{ fashion.fashion_detail }}</p>
+
+        <div class="alert alert-warning">
+          Bạn có chắc muốn xóa fashion này không? Hành động này không thể hoàn tác.
+        </div>
+
+        <button class="btn btn-danger me-2" (click)="confirmDelete()">Xóa</button>
+        <button class="btn btn-secondary" (click)="cancel()">Hủy</button>
+      </div>
+    </div>
+  }
+</div>

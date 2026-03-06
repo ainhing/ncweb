@@ -1,0 +1,45 @@
+<p>fashion-edit works!</p>
+<div class="container mt-4" style="max-width: 700px;">
+  
+
+  @if (errMessage) {
+    <div class="alert alert-danger">{{ errMessage }}</div>
+  }
+
+  <table class="table">
+    <tr>
+      <td><label>Style</label></td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="fashion.style" placeholder="Nhập Style" />
+      </td>
+    </tr>
+    <tr>
+      <td><label>Tiêu đề</label></td>
+      <td>
+        <input type="text" class="form-control" [(ngModel)]="fashion.fashion_subject" placeholder="Nhập tiêu đề" />
+      </td>
+    </tr>
+    <tr>
+      <td><label>Chi tiết (WYSIWYG)</label></td>
+      <td>
+        <!-- Tích hợp Quill hoặc TinyMCE ở đây nếu cần WYSIWYG -->
+        <textarea class="form-control" rows="5" [(ngModel)]="fashion.fashion_detail" placeholder="Nhập chi tiết"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td><label>Ảnh thumbnail</label></td>
+      <td>
+        <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+        @if (fashion.fashion_image) {
+          <img [src]="get_image(fashion.fashion_image)" class="mt-2" width="120" height="120" style="object-fit:cover">
+        }
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button class="btn btn-primary me-2" (click)="update()">Cập nhật</button>
+        <button class="btn btn-secondary" (click)="cancel()">Hủy</button>
+      </td>
+    </tr>
+  </table>
+</div>

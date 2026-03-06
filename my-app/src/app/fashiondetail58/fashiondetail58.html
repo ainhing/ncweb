@@ -1,0 +1,25 @@
+<p>fashiondetail58 works!</p>
+<div class="container mt-4" style="max-width: 800px;">
+  @if (errMessage) {
+    <div class="alert alert-danger">{{ errMessage }}</div>
+  }
+
+  @if (fashion) {
+    <div class="card">
+      @if (fashion.fashion_image) {
+        <img [src]="get_image(fashion.fashion_image)" class="card-img-top"
+             style="max-height:400px; object-fit:cover">
+      }
+      <div class="card-body">
+        <span class="badge bg-secondary mb-2">{{ fashion.style }}</span>
+        <h3 class="card-title">{{ fashion.fashion_subject }}</h3>
+        <p class="text-muted small">{{ fashion.createdAt | date:'dd/MM/yyyy HH:mm' }}</p>
+        <hr>
+        <!-- Render HTML từ WYSIWYG editor -->
+        <div [innerHTML]="fashion.fashion_detail"></div>
+      </div>
+    </div>
+  }
+
+  <button class="btn btn-secondary mt-3" (click)="back()">← Quay lại</button>
+</div>

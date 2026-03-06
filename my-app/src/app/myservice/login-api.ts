@@ -16,15 +16,39 @@ import { catchError } from 'rxjs/internal/operators/catchError';
 export class LoginApi {
   private apiUrl = 'http://localhost:3002';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  login(user: string, password: string): Observable<any> {   // đổi username → user
-    const body = { user, password };                         // gửi đúng key "user"
+  // Gọi POST /login, server sẽ tự set cookie nếu thành công
+  login(user: string, password: string): Observable<any> {
+    const body = { user, password };
+    return this.http
+      .post<any>(`${this.apiUrl}/login`, body, {
+        withCredentials: true, // Bắt buộc để browser nhận & gửi cookie từ server
+      })
+      .pipe(retry(1), catchError(this.handleError));
+  }
 
-    return this.http.post<any>(`${this.apiUrl}/auth`, body).pipe(
-      retry(1),
-      catchError(this.handleError)
+  // Đọc cookie đã lưu (user + password) để tự điền vào form
+  getSavedCredentials(): { user: string; password: string } {
+    const user = this.getCookie('user');
+    const password = this.getCookie('password');
+    return { user, password };
+  }
+
+  // Xóa cookie khi logout (gọi API clear-cookie phía server)
+  logout(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/clear-cookie`, {
+      withCredentials: true,
+      responseType: 'text',
+    });
+  }
+
+  // Đọc cookie theo tên (browser-side)
+  private getCookie(name: string): string {
+    const match = document.cookie.match(
+      new RegExp('(^| )' + name + '=([^;]+)')
     );
+    return match ? decodeURIComponent(match[2]) : '';
   }
 
   private handleError(error: any) {
@@ -42,17 +66,6 @@ export class LoginApi {
 
     console.error(errorMessage);
     return throwError(() => new Error(errorMessage));
-  }
-
-  saveToken(token: string) {
-    localStorage.setItem('auth_token', token);
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('auth_token');
-  }
-
-  logout() {
-    localStorage.removeItem('auth_token');
-  }
+  }  
 }
+

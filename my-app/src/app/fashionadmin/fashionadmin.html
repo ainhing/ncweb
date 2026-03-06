@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <h2>Fashion Collection</h2>
+
+  @if (errMessage) {
+    <div class="alert alert-danger">{{ errMessage }}</div>
+  }
+
+  <!-- Tìm kiếm theo Style -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <input type="text" class="form-control" [(ngModel)]="searchStyle"
+             placeholder="Nhập Style để tìm..." />
+    </div>
+    <div class="col-md-3">
+      <select class="form-select" [(ngModel)]="selectedStyle" (change)="onStyleSelect()">
+        <option value="">-- Chọn Style --</option>
+        @for (s of styles; track s) {
+          <option [value]="s">{{ s }}</option>
+        }
+      </select>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary me-2" (click)="search()">Tìm</button>
+      <button class="btn btn-outline-secondary" (click)="resetSearch()">Reset</button>
+    </div>
+  </div>
+
+  <!-- Hiển thị nhóm theo Style -->
+  @for (style of getStyles(); track style) {
+    <div class="mb-5">
+      <h4 class="border-bottom pb-2">{{ style }}</h4>
+      <div class="row">
+        @for (f of getFashionsByStyle(style); track f._id) {
+          <div class="col-md-3 mb-3">
+            <div class="card h-100" style="cursor:pointer" (click)="viewDetail(f._id)">
+              @if (f.fashion_image) {
+                <img [src]="get_image(f.fashion_image)" class="card-img-top"
+                     style="height:200px; object-fit:cover">
+              }
+              <div class="card-body">
+                <h6 class="card-title">{{ f.fashion_subject }}</h6>
+                <p class="card-text text-muted small">{{ f.createdAt | date:'dd/MM/yyyy' }}</p>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

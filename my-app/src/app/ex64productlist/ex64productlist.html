@@ -1,0 +1,44 @@
+<p>ex64productlist works!</p>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>🛍️ Danh sách sản phẩm</h3>
+    <a routerLink="/cart" class="btn btn-warning position-relative">
+      🛒 Giỏ hàng
+      @if (cartCount > 0) {
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          {{ cartCount }}
+        </span>
+      }
+    </a>
+  </div>
+
+  @if (message) {
+    <div class="alert alert-success alert-dismissible">
+      {{ message }}
+      <button type="button" class="btn-close" (click)="message=''"></button>
+    </div>
+  }
+
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    @for (product of products; track product._id) {
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text text-muted">{{ product.description }}</p>
+            <p class="card-text">
+              <strong class="text-danger">
+                {{ product.price | number }} VNĐ
+              </strong>
+            </p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary w-100" (click)="addToCart(product)">
+               ADD TO CART
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

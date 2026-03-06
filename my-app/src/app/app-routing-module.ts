@@ -29,6 +29,14 @@ import { Login } from './login/login';
 import { BookList } from './book-list/book-list';
 import { BookDetail } from './book-detail/book-detail';
 import { BookEdit } from './book-edit/book-edit';
+import { FashionNew } from './fashion-new/fashion-new';
+import { FashionUpdate } from './fashion-update/fashion-update';
+import { FashionDelete } from './fashion-delete/fashion-delete';
+import { Fashionadmin } from './fashionadmin/fashionadmin';
+import { FashionEdit } from './fashion-edit/fashion-edit';
+import { Fashiondetail58 } from './fashiondetail58/fashiondetail58';
+import { Ex64productlist } from './ex64productlist/ex64productlist';
+import { Ex64cart } from './ex64cart/ex64cart';
 const routes: Routes = [
   {path:'gioi-thieu',component: About},
   {path:'sanpham1',component: Listproduct1},
@@ -48,6 +56,11 @@ const routes: Routes = [
   {path:'ex53',component: Fashion},
   {path:'ex54/:id',component: FashionDetail},
   {path:'ex54',component: FashionDetail},
+  {path:'ex55',component: FashionNew},
+  {path:'ex56',component: FashionUpdate},
+  {path:'ex56/:id',component: FashionUpdate},
+  {path:'ex57',component: FashionDelete},
+  {path:'ex57/:id',component: FashionDelete},
   {path:'list-customer', component: Listcustomer},
   {path:'list-customer-service', component: Listcustomerservice},
   {path:'list-customer-http', component: CustomerHtte},
@@ -59,6 +72,14 @@ const routes: Routes = [
   {path:'book-edit', component: BookEdit}, 
   {path:'book-detail/:id', component: BookDetail}, 
   {path:'book-detail', component: BookDetail}, 
+  {path:'ex64product', component: Ex64productlist}, 
+  {path:'ex64cart', component: Ex64cart}, 
+  {path:'fashionadmin', component: Fashionadmin}, 
+  {path:'fashionnew', component: FashionNew}, 
+  {path:'fashionedit', component: FashionEdit}, 
+  {path:'fashionedit/:id', component: FashionEdit}, 
+  {path:'fashiondetail/', component: Fashiondetail58}, 
+  {path:'fashiondetail/:id', component: Fashiondetail58}, 
   // {path:'ex13-service', component: Ex13},
   // {path:'ex13-service', component: Ex13},
   // {path:'ex13-service/:id', component: Ex13Detail},

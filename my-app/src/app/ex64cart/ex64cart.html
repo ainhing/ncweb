@@ -1,0 +1,75 @@
+<p>ex64cart works!</p>
+<div class="container mt-4">
+  <h3>🛒 Giỏ hàng của bạn</h3>
+
+  @if (message) {
+    <div class="alert alert-info alert-dismissible">
+      {{ message }}
+      <button type="button" class="btn-close" (click)="message=''"></button>
+    </div>
+  }
+
+  @if (cart.length === 0) {
+    <div class="alert alert-warning">
+      Giỏ hàng trống!
+      <a routerLink="/products" class="btn btn-primary ms-3">🛍️ Tiếp tục mua hàng</a>
+    </div>
+  } @else {
+    <table class="table table-bordered table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Chọn</th>
+          <th>Sản phẩm</th>
+          <th>Đơn giá</th>
+          <th>Số lượng</th>
+          <th>Thành tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of cart; track item._id) {
+          <tr>
+            <td class="text-center">
+              <input
+                type="checkbox"
+                [(ngModel)]="item.checked"
+              />
+            </td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price | number }} VNĐ</td>
+            <td>
+              <input
+                type="number"
+                class="form-control"
+                style="width: 80px"
+                [(ngModel)]="item.quantity"
+                min="1"
+              />
+            </td>
+            <td>{{ item.price * item.quantity | number }} VNĐ</td>
+          </tr>
+        }
+      </tbody>
+      <tfoot>
+        <tr class="table-warning">
+          <td colspan="4" class="text-end fw-bold">Tổng cộng:</td>
+          <td class="fw-bold text-danger">{{ totalPrice() | number }} VNĐ</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-danger" (click)="removeChecked()">
+         Xóa mục đã chọn
+      </button>
+      <button class="btn btn-success" (click)="updateCart()">
+         Cập nhật giỏ hàng
+      </button>
+      <a routerLink="/products" class="btn btn-secondary">
+         Tiếp tục mua hàng
+      </a>
+      <button class="btn btn-warning ms-auto" (click)="checkout()">
+        Thanh toán
+      </button>
+    </div>
+  }
+</div>
